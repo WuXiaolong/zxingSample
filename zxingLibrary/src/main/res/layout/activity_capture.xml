@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.google.zxing.client.android.CaptureActivity">
+
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <com.google.zxing.client.android.ViewfinderView
+        android:id="@+id/viewfinderView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:corner_color="@color/corner_color"
+        app:frame_color="@color/viewfinder_frame"
+        app:label_text="二维码扫描"
+        app:label_text_color="@color/colorAccent"
+        app:laser_color="@color/laser_color"
+        app:mask_color="@color/viewfinder_mask"
+        app:result_color="@color/result_view"
+        app:result_point_color="@color/result_point_color" />
+</FrameLayout>

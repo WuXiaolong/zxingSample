@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +18,7 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.activity.CaptureActivity;
-import com.google.zxing.client.android.encoding.EncodingHandler;
+import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.common.HybridBinarizer;
 
 import java.util.EnumMap;
@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
-            case R.id.qrcode_encode: //生成
-                try {
-                    Bitmap mBitmap = EncodingHandler.createQRCode("www.baidu.com", 300);
-                    qrcodeImg.setImageBitmap(mBitmap);
-                    decodeQRCode(mBitmap);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
+//            case R.id.qrcode_encode: //生成
+//                try {
+//                    Bitmap mBitmap = EncodingHandler.createQRCode("www.baidu.com", 300);
+//                    qrcodeImg.setImageBitmap(mBitmap);
+//                    decodeQRCode(mBitmap);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                break;
         }
     }
 
