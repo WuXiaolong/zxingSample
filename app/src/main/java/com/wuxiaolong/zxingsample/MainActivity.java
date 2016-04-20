@@ -2,9 +2,8 @@ package com.wuxiaolong.zxingsample;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.appcompat.BuildConfig;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.zxing.activity.CaptureActivity;
-import com.google.zxing.encoding.EncodingHandler;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Result;
+import com.google.zxing.client.android.activity.CaptureActivity;
+import com.google.zxing.client.android.encoding.EncodingHandler;
+import com.google.zxing.common.HybridBinarizer;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     Bitmap mBitmap = EncodingHandler.createQRCode("www.baidu.com", 300);
                     qrcodeImg.setImageBitmap(mBitmap);
+                    decodeQRCode(mBitmap);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -54,6 +63,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 解析二维码图片
+     *
+     * @param bitmap   要解析的二维码图片
+     */
+    public static final Map<DecodeHintType, Object> HINTS = new EnumMap<DecodeHintType, Object>(DecodeHintType.class);
+
+    public static void decodeQRCode(final Bitmap bitmap) {
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                try {
+                    int width = bitmap.getWidth();
+                    int height = bitmap.getHeight();
+                    int[] pixels = new int[width * height];
+                    bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
+                    RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
+                    Result result = new MultiFormatReader().decode(new BinaryBitmap(new HybridBinarizer(source)), HINTS);
+                    return result.getText();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                Log.d("wxl","result="+result);
+//                if (delegate != null) {
+//                    if (!TextUtils.isEmpty(result)) {
+//                        delegate.onDecodeQRCodeSuccess(result);
+//                    } else {
+//                        delegate.onDecodeQRCodeFailure();
+//                    }
+//            }
+        }
+    }
+
+    .
+
+    execute();
+
+}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

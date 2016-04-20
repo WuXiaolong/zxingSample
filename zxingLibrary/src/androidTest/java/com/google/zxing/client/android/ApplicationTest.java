@@ -1,4 +1,4 @@
-package com.wuxiaolong.zxinglibrary;
+package com.google.zxing.client.android;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
