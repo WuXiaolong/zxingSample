@@ -128,7 +128,7 @@ ADDED from E:\AndroidStudioProjects\zxingSample\zxing\src\main\AndroidManifest.x
 	android:clearTaskOnLaunch
 		ADDED from E:\AndroidStudioProjects\zxingSample\zxing\src\main\AndroidManifest.xml:74:13-45
 	android:screenOrientation
-		ADDED from E:\AndroidStudioProjects\zxingSample\zxing\src\main\AndroidManifest.xml:75:13-49
+		ADDED from E:\AndroidStudioProjects\zxingSample\zxing\src\main\AndroidManifest.xml:75:13-56
 	android:stateNotNeeded
 		ADDED from E:\AndroidStudioProjects\zxingSample\zxing\src\main\AndroidManifest.xml:76:13-42
 	android:windowSoftInputMode
