@@ -18,7 +18,8 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.client.android.decode.CaptureActivity;
+import com.google.zxing.client.android.encode.QRCodeEncoder;
 import com.google.zxing.common.HybridBinarizer;
 
 import java.util.EnumMap;
@@ -41,25 +42,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         scannerQRCode.setOnClickListener(this);
         generateQRCode.setOnClickListener(this);
-        Log.d("wxl", "DEBUG=" + BuildConfig.DEBUG);
+        //长按图片识别二维码
+        qrcodeImg.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                qrcodeImg.setDrawingCacheEnabled(true);
+                Bitmap bitmap = Bitmap.createBitmap(qrcodeImg.getDrawingCache());
+                qrcodeImg.setDrawingCacheEnabled(false);
+                decodeQRCode(bitmap);
+                return true;
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.qrcode_dencode: //扫描
-                Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+                intent = new Intent(MainActivity.this, CaptureActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
-//            case R.id.qrcode_encode: //生成
-//                try {
-//                    Bitmap mBitmap = EncodingHandler.createQRCode("www.baidu.com", 300);
-//                    qrcodeImg.setImageBitmap(mBitmap);
-//                    decodeQRCode(mBitmap);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                break;
+            case R.id.qrcode_encode: //生成
+
+                try {
+                    Bitmap mBitmap = QRCodeEncoder.encodeAsBitmap("http://wuxiaolong.me/", 300);
+                    qrcodeImg.setImageBitmap(mBitmap);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -68,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      * @param bitmap   要解析的二维码图片
      */
-    public static final Map<DecodeHintType, Object> HINTS = new EnumMap<DecodeHintType, Object>(DecodeHintType.class);
+    public final Map<DecodeHintType, Object> HINTS = new EnumMap<>(DecodeHintType.class);
 
-    public static void decodeQRCode(final Bitmap bitmap) {
+    public void decodeQRCode(final Bitmap bitmap) {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
@@ -89,22 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             protected void onPostExecute(String result) {
-                Log.d("wxl","result="+result);
-//                if (delegate != null) {
-//                    if (!TextUtils.isEmpty(result)) {
-//                        delegate.onDecodeQRCodeSuccess(result);
-//                    } else {
-//                        delegate.onDecodeQRCodeFailure();
-//                    }
-//            }
-        }
+                Log.d("wxl", "result=" + result);
+                Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+            }
+        }.execute();
+
     }
-
-    .
-
-    execute();
-
-}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -26,7 +26,6 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.client.android.PreferencesActivity;
 import com.google.zxing.client.android.R;
 

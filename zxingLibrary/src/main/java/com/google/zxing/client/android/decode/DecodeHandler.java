@@ -29,7 +29,6 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.client.android.R;
 import com.google.zxing.common.HybridBinarizer;
 
@@ -96,12 +95,13 @@ final class DecodeHandler extends Handler {
             }
         }
 
-        Handler handler = activity.getHandler();
+        Handler handler = activity.getHandler();//拿到CaptureActivityHandler
         if (rawResult != null) {
             // Don't log the barcode contents for security.
             long end = System.currentTimeMillis();
             Log.d(TAG, "Found barcode in " + (end - start) + " ms");
             if (handler != null) {
+                //给CaptureActivityHandler发消息
                 Message message = Message.obtain(handler, R.id.decode_succeeded, rawResult);
                 Bundle bundle = new Bundle();
                 bundleThumbnail(source, bundle);

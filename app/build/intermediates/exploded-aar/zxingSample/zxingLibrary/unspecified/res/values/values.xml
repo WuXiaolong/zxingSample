@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="country_codes" ns1:ignore="MissingTranslation">
+    <item>-</item>
+    <item>AR</item>
+    <item>AU</item>
+    <item>BR</item>
+    <item>BG</item>
+    <item>CA</item>
+    <item>CH</item>
+    <item>CN</item>
+    <item>CZ</item>
+    <item>DE</item>
+    <item>DK</item>
+    <item>ES</item>
+    <item>FI</item>
+    <item>FR</item>
+    <item>GB</item>
+    <item>GR</item>
+    <item>HU</item>
+    <item>ID</item>
+    <item>IT</item>
+    <item>JP</item>
+    <item>KR</item>
+    <item>NL</item>
+    <item>PL</item>
+    <item>PT</item>
+    <item>RO</item>    
+    <item>RU</item>
+    <item>SE</item>
+    <item>SK</item>
+    <item>SI</item>
+    <item>TR</item>
+    <item>TW</item>
+    <item>US</item>
+  </string-array>
+    <string-array name="preferences_front_light_options">
+    <item>@string/preferences_front_light_on</item>
+    <item>@string/preferences_front_light_auto</item>
+    <item>@string/preferences_front_light_off</item>
+  </string-array>
+    <string-array name="preferences_front_light_values" ns1:ignore="MissingTranslation">
+    <item>ON</item>
+    <item>AUTO</item>
+    <item>OFF</item>
+  </string-array>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="corner_color">#00FF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <declare-styleable name="ViewfinderView"><attr format="color" name="corner_color"/><attr format="color" name="laser_color"/><attr format="color" name="frame_color"/><attr format="color" name="mask_color"/><attr format="color" name="result_point_color"/><attr format="color" name="result_color"/><attr format="color" name="label_text_color"/><attr format="string" name="label_text"/><attr format="float" name="label_text_size"/></declare-styleable>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <item name="auto_focus" type="id"/>
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="encode_failed" type="id"/>
+    <item name="encode_succeeded" type="id"/>
+    <item name="launch_product_query" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+    <item name="search_book_contents_failed" type="id"/>
+    <item name="search_book_contents_succeeded" type="id"/>
+    <string name="app_name">zxingLibrary</string>
+</resources>

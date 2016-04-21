@@ -18,7 +18,7 @@ package com.google.zxing.client.android.decode;
 
 import com.google.zxing.ResultPoint;
 import com.google.zxing.ResultPointCallback;
-import com.google.zxing.client.android.ViewfinderView;
+import com.google.zxing.client.android.view.ViewfinderView;
 
 final class ViewfinderResultPointCallback implements ResultPointCallback {
 
