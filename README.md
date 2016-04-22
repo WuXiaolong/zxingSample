@@ -5,6 +5,7 @@ zxingLibrary：只有扫码和生成二维码
 
 # 相关博客
 [Android zxing(上)](http://mp.weixin.qq.com/s?__biz=MzI4MzE2MTQ5Mw==&mid=2649752097&idx=1&sn=6ade471c63b7246738e78fb4012cc98b#rd)
+[Android zxing(下)](http://mp.weixin.qq.com/s?__biz=MzI4MzE2MTQ5Mw==&mid=2649752098&idx=1&sn=6a6b942dde8b8acce0a6b28493ab3a92#rd)
 
 # AndroidProgrammer
 我的微信公众号：Android高手进阶之路，让我们共同学习，每天进步一点点。欢迎微信扫一扫关注。
